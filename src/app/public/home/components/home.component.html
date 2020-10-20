@@ -1,0 +1,133 @@
+<!-- <p>home works!</p> -->
+<section class="jumbotron text-center bg-head mb-0">
+  <div class="container bg-text">
+    <h1 class="text-white">JobSpace</h1>
+    <p class="lead text-white">Everyday Jobs. Everyday People.</p>
+    <p>
+      <a *ngIf="!_auth.isLoggedIn" href="/auth/login" class="btn btn-info my-2" >Sign In</a>
+      <a *ngIf="_auth.isLoggedIn" (click)="_auth.logout()" href="javascript:void(0);" class="btn btn-info my-2" >Sign Out</a>
+      <a href="#" class="btn btn-secondary my-2 ml-2">Invite</a>
+    </p>
+  </div>
+</section>
+
+<div class="py-4">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-12">
+
+          <div class="container">
+              <form class="submit-form customform" #form="ngForm" (ngSubmit)="form.valid && onSubmit(form)">
+                <div class="row">
+                    
+                    <div class="col-12 text-center mb-3">
+                      <h3 class="text-info">LOOKING FOR JOBS</h3>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                      <ng-select class="select-custom mb-3" 
+                        [ngClass]="{ 'is-invalid': (category.dirty || category.touched || form.submitted ) && category.invalid }"
+                        [items]="categories" 
+                        bindLabel="category" 
+                        bindValue="id"
+                        [clearable]="false" 
+                        [loading]="isFetchCategory" 
+                        name="category" #category="ngModel"
+                        [(ngModel)]="category_id" 
+                        required 
+                        [multiple]="false"
+                        [disabled]="isHandel"
+                        [ngModelOptions]="{standalone: true}"
+                        [searchable]="false"
+                        (change)="onChangeCategory()"
+                      >
+                        <ng-template ng-option-tmp let-item="item">
+                          <span>{{item.category}}</span>
+                        </ng-template>
+                      </ng-select>
+                      <!-- <form-validate [key]="size" [name]="'Category'" class="invalid-feedback"></form-validate>   -->
+                    </div><!-- end col -->
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                      <ng-select class="select-custom mb-3" 
+                        [ngClass]="{ 'is-invalid': (distance.dirty || distance.touched || form.submitted ) && distance.invalid }"
+                        [items]="distances" 
+                        bindLabel="label" 
+                        bindValue="id"
+                        [clearable]="false" 
+                        [loading]="isFetchCategory" 
+                        name="distance" #distance="ngModel"
+                        [(ngModel)]="distance_id" 
+                        required 
+                        [multiple]="false"
+                        [disabled]="isHandel"
+                        [searchable]="false"
+                        (change)="onChangeDistance()"
+                      >
+                      <ng-template ng-option-tmp let-item="item">
+                          <span>{{item.label}}</span>
+                      </ng-template>
+                      </ng-select>
+                    </div><!-- end col -->
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <button class="btn btn-lg btn-outline-info btn-block" (click)="staticModal.show()">Zipcode</button>
+                    </div><!-- end col -->
+                </div><!-- end row -->                      
+              </form>
+          </div><!-- end container -->
+
+          <div class="container position-relative">
+            <app-ui-preloader [display]="isFetchJob" [data]="jobs"></app-ui-preloader>
+            <div class="list-jobs mt-3" *ngIf="jobs.length>0">
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-3" *ngFor="let item of jobs">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="{{item?.image_url || 'https://dummyimage.com/600x400/55595c/fff'}}" alt="{{item?.title || 'image job'}}">
+                        <div class="job-title">
+                          <h6><a class="text-white text-capitalize" [routerLink]="['/job', item.id]" title="View Product">{{item?.title}}</a></h6>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal -->
+<!-- <ng-template #template> -->
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+      tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-static-name" class="modal-title pull-left">Change Zipcode</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="fZipcode.reset(); staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-ui-preloader [display]="isFetchZipcode"></app-ui-preloader>
+        <form #fZipcode="ngForm" (ngSubmit)="fZipcode.valid && onSubmitCode(fZipcode)">
+          <div class="input-group mb-4">
+            <!-- <label for="">Zipcode</label> -->
+            <input type="text" class="form-control" placeholder="Zipcode..." required
+              [(ngModel)]="zipcode" name="txtZipcode" #txtZipcode="ngModel" [disabled]="isHandel"
+              [ngClass]="{ 'is-invalid': (txtZipcode.dirty || txtZipcode.touched || fZipcode.submitted ) && txtZipcode.invalid }">
+            <form-validate [key]="txtZipcode" [name]="'Zipcode'" class="invalid-feedback cus-error-input"></form-validate>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-info" [disabled]="isHandel">Select</button>
+            <button type="button" class="btn btn-danger ml-2" (click)="fZipcode.reset(); staticModal.hide()" [disabled]="isHandel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </ng-template> -->

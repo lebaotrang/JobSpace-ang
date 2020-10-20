@@ -1,0 +1,52 @@
+/* body {
+    padding-top: 5rem;
+} */
+.cus-error-input {
+    position: absolute;
+    bottom: -20px;;
+}
+.logo {
+    height: 20px;
+    margin-bottom: 4px;
+}
+
+.cus-shadow-nav {
+    box-shadow: 0 0.01rem 0.1rem rgba(0,0,0,.15)!important;
+}
+.bg-head {
+    background-image: url("../images/bg-head.jpg");
+    background-blend-mode: multiply;
+    background-color: gray;
+}
+
+.main, .data-section {
+    min-height: calc(100vh - 100px);
+}
+
+.empty {
+    text-align: center;
+    padding: 10px;
+    color: #6c757d66 !important;
+}
+
+.empty i.far.fa-folder-open {
+    font-size: 70px;
+    padding: 10px;
+    font-weight: lighter;
+}
+
+.list-jobs .job-title {
+    padding: 15px 10px;
+    position: absolute;
+    background: #0000005e;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+ } */

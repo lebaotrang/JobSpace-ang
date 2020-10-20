@@ -1,0 +1,36 @@
+
+<section class="ui-card reports-index-card" [hidden]='!display'> 
+  <!-- SKELETON LOADING -->
+  <div class="skeleton-wrapper">
+    <div class="title-block">
+      <div class="skeleton title"></div>
+      <div class="skeleton content"></div>
+      <div class="skeleton content last-row"></div>
+    </div>
+    <div class="title-block">
+      <div class="skeleton title"></div>
+      <div class="skeleton content"></div>
+      <div class="skeleton content last-row"></div>
+    </div>
+    <div class="title-block">
+      <div class="skeleton title"></div>
+      <div class="skeleton content"></div>
+      <div class="skeleton content last-row"></div>
+    </div>
+    <div class="title-block">
+      <div class="skeleton title"></div>
+      <div class="skeleton content"></div>
+      <div class="skeleton content last-row"></div>
+    </div>
+    <div class="list-block">
+      <div class='skeleton content line-item'></div>
+      <div class='skeleton content line-item-last'></div>
+    </div>
+  </div>
+  <!-- END OF SKELETON LOADING -->
+</section>
+
+<div class="empty" *ngIf="data || (data && data.length==0)">
+  <i class="far fa-folder-open fa-4x"></i>
+  <p>Empty Data</p>
+</div>

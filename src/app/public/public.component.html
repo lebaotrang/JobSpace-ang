@@ -1,0 +1,57 @@
+<!-- <p>public works!</p>
+<small class="d-block">This page is landing page: homepage/ contact/ cart...</small>
+<a routerLink="/auth">Login</a> -->
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-light bg-white cus-shadow-nav">
+        <a class="navbar-brand" routerLink="/">
+            <img src="./assets/images/logo-black.png" class="logo" alt="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" routerLink="/public">Home <span class="sr-only">(current)</span></a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Invite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="term-condition">Term and Condition</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="privacy-policy">Privacy</a>
+                </li>
+            </ul>
+            <button *ngIf="_auth.isLoggedIn" class="btn btn-info my-2 my-sm-0" type="button">Submit Job</button>
+            <a *ngIf="_auth.isLoggedIn" class="btn btn-info my-2 my-sm-0 ml-2" routerLink="private" >Profile</a>
+        </div>
+    </nav>   
+</header>
+
+<main role="main" class="main">
+    <router-outlet></router-outlet>    
+</main>
+
+<footer class="text-muted bg-dark py-4">
+    <div class="container">
+        <!-- <p class="float-right">
+            <a href="#">Back to top</a>
+        </p> -->
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <p>Copyright © 2020 JobSpace. All Rights Reserved.</p>
+            </div> 
+            <div class="col-md-6 col-12 text-md-right">
+                <p>
+                    <a class="" routerLink="term-condition">Term and Condition</a> | 
+                    <a class="" routerLink="privacy-policy">Privacy</a>
+                </p>
+            </div> 
+        </div>
+    
+    </div>
+</footer>

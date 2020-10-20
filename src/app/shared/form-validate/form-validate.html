@@ -1,0 +1,8 @@
+<div *ngIf="key">
+  <div *ngIf="key.errors">
+    <div *ngIf="key['errors'].required">{{name || "This field"}} is required!</div>
+    <div *ngIf="key['errors'].email">{{name || "This field"}} is invalid!</div>
+    <div *ngIf="key['errors'].pattern">{{name || "This field"}} is invalid!</div>
+    <div *ngIf="key['errors'].minlength">{{name}} at least is {{minlength}} character.</div>
+  </div>
+</div>

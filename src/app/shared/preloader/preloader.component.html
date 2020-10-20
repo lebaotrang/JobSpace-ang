@@ -1,0 +1,11 @@
+
+<div class="preloader" [hidden]='!display'>
+  <div class="status">
+      <div class="spinner-border avatar-sm text-info m-2" role="status"></div>
+  </div>
+</div>
+
+<div class="empty" *ngIf="showEmpty && data && data.length==0">
+  <i class="far fa-folder-open fa-4x"></i>
+  <p>Empty Data</p>
+</div>

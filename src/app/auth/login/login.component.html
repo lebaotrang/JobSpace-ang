@@ -1,0 +1,48 @@
+<div class="login-box">
+  <!-- <div class="login-logo">
+    <img src="../../../../assets/img/logo.png" style="width: 100%"/>
+    <a routerLink="/">Landing page</a>
+  </div> -->
+  <!-- /.login-logo -->
+  <div class="card" style="background: transparent; color: white">
+    <app-ui-preloader [display]="isHandle"></app-ui-preloader>
+    <div class="card-body login-card-body p-0">
+      <!-- <p class="login-box-msg text-orange">Sign in to start your session</p> -->
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-custom"><i class="fas fa-envelope"></i></span>
+          </div>
+          <input type="email" required email class="form-control placehoder-orange border-orange" placeholder="Email" 
+            [(ngModel)]="account.email" name="emailLogin" #emailLogin="ngModel" [disabled]="isHandle"
+            [ngClass]="{ 'is-invalid': (emailLogin.dirty || emailLogin.touched || f.submitted ) && emailLogin.invalid }">
+          <form-validate [key]="emailLogin" [name]="'Email'" class="invalid-feedback cus-error-input"></form-validate>
+        </div>
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text input-group-text-custom"><i class="fas fa-lock"></i></span>
+          </div>
+          <input type="password" required minlength="6" class="form-control placehoder-orange border-orange" placeholder="Password" 
+            [(ngModel)]="account.password" name="password" #password="ngModel" [disabled]="isHandle" 
+            [ngClass]="{ 'is-invalid': (password.dirty || password.touched || f.submitted ) && password.invalid }">
+          <form-validate [key]="password" [name]="'Email'" class="invalid-feedback cus-error-input"></form-validate>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-info btn-block btn-flat" [disabled]="isHandle">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <p class="mt-3">
+        <a routerLink="/forgot-password">I forgot my password</a> | 
+        <a routerLink="/auth/register">Register</a> |
+        <a routerLink="/">Back Home</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
